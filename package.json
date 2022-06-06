@@ -9,7 +9,6 @@
     "build-example": "yarn workspace example build"
   },
   "workspaces": [
-    "greenboard",
-    "example"
+    "greenboard"
   ]
 }

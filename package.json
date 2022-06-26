@@ -1,14 +1,14 @@
 {
-  "name": "greenboard-workspace",
+  "name": "docs-workspace",
   "private": true,
   "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "develop-example": "yarn workspace example develop",
-    "build-example": "yarn workspace example build"
+    "develop": "yarn workspace featureguards-docs develop",
+    "build": "yarn workspace featureguards-docs build"
   },
   "workspaces": [
-    "greenboard"
+    "docs"
   ]
 }

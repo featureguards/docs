@@ -9,7 +9,8 @@ $code-container-width: 50%;
 $code-container-bg: #2a3138;
 $aside-info-bg: #2f80ed;
 $aside-success-bg: #27ae60;
-$aside-warning-bg: #eb5757;
+$aside-warning-bg: #ebd057;
+$aside-error-bg: #eb5757;
 $code-font-family: "Roboto", sans-serif;
 
 html,
@@ -83,7 +84,7 @@ body {
       padding: 5px 16px;
       a {
         color: $sidebar-list-color;
-        text-decoration: underline;
+        text-decoration: none;
       }
     }
   }  
@@ -205,6 +206,12 @@ body {
       }
     }
 
+    &.error {
+      &:before {
+        background: $aside-error-bg;
+      }
+    }
+
     &.success {
       &:before {
         background: $aside-success-bg;
@@ -290,7 +297,7 @@ body {
     font-family: $code-font-family;
     font-size: 14px;
     background: #efefef;
-    padding: 3px;
+    margin: 3px;
     color: #5b5b5b;
   }
 
@@ -314,7 +321,7 @@ body {
 
 .logo {
   max-width: 175px;
-  max-height: 50px;
+  max-height: 100px;
   padding-left: 20px;
 }
 

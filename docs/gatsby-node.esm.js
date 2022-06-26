@@ -1,16 +1,16 @@
-const fs = require('fs')
+import { existsSync } from 'fs'
 
 // Make sure the data directory exists
-exports.onPreBootstrap = ({ reporter }) => {
+export function onPreBootstrap({ reporter }) {
   const contentPath = 'data/index.html.md'
 
-  if (!fs.existsSync(contentPath)) {
+  if (!existsSync(contentPath)) {
     reporter.panic(`File not found - Make sure you have data/index.html.md file`)
   }
 }
 
 // Creating a page with  docs/index.md file
-exports.createPages = async ({ actions, graphql, reporter }) => {
+export async function createPages({ actions, graphql, reporter }) {
   // Check for title and language tabs
   const result = await graphql(`
     query {

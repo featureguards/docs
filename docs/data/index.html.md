@@ -129,7 +129,7 @@ const featureGuards = await featureguards({
 
 FeatureGuards does **NOT** do any networking IO for _IsOn_. Therefore, it's safe to call it million
 times a second without any caching. It internally keeps a synced copy of all the features defined
-in FeatureGuard fro the given.
+in FeatureGuard for the given API key.
 
 ```go
 // Using fg obtained from the SDK.
@@ -147,7 +147,7 @@ const on = await fg.isOn("MY_FEATURE");
 ```
 
 <aside class="warning">
-Errors are thrown/returned if a feature toggle doesn't exist or the rare occasions the SDK
+Errors are thrown/returned if a feature toggle doesn't exist or at the rare occasions the SDK
 failing to fetch/refresh its synced copy of feature toggles due to FeatureGuards being down.
 </aside>
 

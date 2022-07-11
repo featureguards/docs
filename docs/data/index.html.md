@@ -76,22 +76,22 @@ const featureGuards = await featureguards({
 > Make sure to replace `MY_API_KEY` with your API key based on the platform.
 
 FeatureGuards uses API keys to allow access to the APIs. You can generate a new FeatureGuards API key at our [dashboard](https://featureguards.com/project/settings).
-An API key is associated with a particular platform (i.e., web, server). Only feature toggles that
+An API key is associated with a particular platform (i.e., web, server). Only feature flags that
 belong to the given platform are accessed via the corresponding API key. For example, a web API key
-can only access web/browser feature toggles.
+can only access web/browser feature flags.
 
 <aside class="notice">
 You must replace <code>MY_API_KEY</code> with your platform's API key.
 </aside>
 
-# Feature Toggles
+# Feature Flags
 
 ## Default Values
 
 It's possible to specify default values. This is useful in cases where the defaults might be on
 and not off and the exceptional cases where FeatureGuards is down. The SDK will return the default
-value provided for each feature toggle. This is sometimes useful after a feature has been released
-and the feature-toggle is used as a kill switch, hence it's desirable to keep the feature toggle
+value provided for each feature flag. This is sometimes useful after a feature has been released
+and the feature-toggle is used as a kill switch, hence it's desirable to keep the feature flag
 check in code even after the feature is released. To pass defaults, here are examples in each
 language.
 
@@ -147,17 +147,17 @@ const on = await fg.isOn("MY_FEATURE");
 ```
 
 <aside class="warning">
-Errors are thrown/returned if a feature toggle doesn't exist or at the rare occasions the SDK
-failing to fetch/refresh its synced copy of feature toggles due to FeatureGuards being down.
+Errors are thrown/returned if a feature flag doesn't exist or at the rare occasions the SDK
+failing to fetch/refresh its synced copy of feature flags due to FeatureGuards being down.
 </aside>
 
-## Percentage Feature Toggles
+## Percentage Feature Flags
 
 FeatureGuards evaluates whether a feature is on or off based on provided attributes (if any).
 For example, if a feature is turn on at 10%, it can consistently return on/off for the same _userId_,
 _companyId_ or any other attribute provided. If multiple attributes are provided for evaluation,
 they will be checked in order based on the attributes provided to the call for `IsOn`. So, if the
-feature toggle definition includes both _userId_ and _companyId_ in that order, the _user_id_ will
+feature flag definition includes both _userId_ and _companyId_ in that order, the _user_id_ will
 be used if both values are passed to `IsOn`. Below are examples for passing attributes to be used
 for evaluating on/off.
 
@@ -196,7 +196,7 @@ defined in FeatureGuards as a string too.
 ## Allow/Disallow List
 
 FeatureGuards allows specifying additional constraints as part of evaluating whether a feature is
-on or off. Even if a feature toggle evaluates to off based on the percentage or if it was actually
+on or off. Even if a feature flag evaluates to off based on the percentage or if it was actually
 turned off, it can still be on for a subset of the population based on the allow list rules defined
 on the feature and the attributes passed in. This is useful in scenarios where the feature is off
 by default, but is only turned on for certain users based on their _userId_.

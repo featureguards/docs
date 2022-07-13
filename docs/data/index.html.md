@@ -30,11 +30,11 @@ programming language.
 It takes a few minutes to add FeatureGuards to your codebase. Please, follow the examples below
 for each language.
 
-| Language             | Package                                                            | Example                                                                                          |
-| -------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| Go                   | `go get -u github.com/featureguards/featureguards-go/v2`           | [Go](https://github.com/featureguards/featureguards-go/blob/main/examples_test.go)               |
-| Javascript (NodeJS)  | `yarn add featureguards-node` or `npm i --save featureguards-node` | [NodeJS](https://github.com/featureguards/featureguards-js/tree/main/examples/node/src/index.ts) |
-| Javascript (Browser) | `yarn add featureguards-web` or `npm i --save featureguards-web`   | [Browser](https://github.com/featureguards/featureguards-js/tree/main/examples/web/src/index.ts) |
+| Language             | Package                                                            | Example                                                                                           |
+| -------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| Go                   | `go get -u github.com/featureguards/featureguards-go/v2`           | [Go](https://github.com/featureguards/featureguards-go/blob/main/examples_test.go)                |
+| Javascript (NodeJS)  | `yarn add featureguards-node` or `npm i --save featureguards-node` | [NodeJS](https://github.com/featureguards/featureguards-js/tree/main/examples/node/src/index.ts)  |
+| Javascript (Browser) | `yarn add featureguards-web` or `npm i --save featureguards-web`   | [Browser](https://github.com/featureguards/featureguards-js/tree/main/examples/web/src/index.tsx) |
 
 # Authentication
 

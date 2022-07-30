@@ -2,11 +2,12 @@
 title: Docs
 
 language_tabs:
+  - python
   - go
-  - javascript
   - typescript
 
 footer:
+  - <a href="https://www.github.com/featureguards/featureguards-python" class="sdk">Python SDK</a>
   - <a href="https://www.github.com/featureguards/featureguards-go" class="sdk">Go SDK</a>
   - <a href="https://www.github.com/featureguards/featureguards-js" class="sdk">Javascript SDK</a>
   - <a href='https://app.featureguards.com/register'>Sign up</a>
@@ -32,6 +33,7 @@ for each language.
 
 | Language             | Package                                                            | Example                                                                                           |
 | -------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| Python               | `python3 -m pip install --upgrade featureguards`                   | [Python](https://github.com/featureguards/featureguards-python/blob/main/examples)                |
 | Go                   | `go get -u github.com/featureguards/featureguards-go/v2`           | [Go](https://github.com/featureguards/featureguards-go/blob/main/examples_test.go)                |
 | Javascript (NodeJS)  | `yarn add featureguards-node` or `npm i --save featureguards-node` | [NodeJS](https://github.com/featureguards/featureguards-js/tree/main/examples/node/src/index.ts)  |
 | Javascript (Browser) | `yarn add featureguards-web` or `npm i --save featureguards-web`   | [Browser](https://github.com/featureguards/featureguards-js/tree/main/examples/web/src/index.tsx) |
@@ -39,6 +41,12 @@ for each language.
 # Authentication
 
 > To authenticate with FeatureGuards, use this code:
+
+```python
+from featureguards.feature_flags import feature_flags
+from os import getenv
+fg = feature_flags(api_key=getenv('MY_API_KEY'))
+```
 
 ```go
 
@@ -49,17 +57,6 @@ import (
 ctx, cancel := context.WithCancel(context.Background())
 defer cancel()
 fg := featureguards.New(ctx, featureguards.WithApiKey("MY_API_KEY"))
-```
-
-```javascript
-// For NodeJS
-import featureguards from "featureguards-node";
-// For Browser/Web
-import featureguards from "featureguards-web";
-
-const featureGuards = await featureguards({
-  apiKey: "MY_API_KEY",
-});
 ```
 
 ```typescript
@@ -95,6 +92,10 @@ and the feature-toggle is used as a kill switch, hence it's desirable to keep th
 check in code even after the feature is released. To pass defaults, here are examples in each
 language.
 
+```python
+fg = feature_flags(api_key='...', defaults={'MY_FEATURE': True, 'MY_FEATURE_2': True})
+```
+
 ```go
 fg := featureguards.New(ctx,
 		featureguards.WithDefaults(map[string]bool{
@@ -103,16 +104,6 @@ fg := featureguards.New(ctx,
       /* ...etc */
       }),
       /* Other options */)
-```
-
-```javascript
-const featureGuards = await featureguards({
-  defaults: {
-    MY_FEATURE: true,
-    MY_FEATURE_2: true,
-  },
-  // Other options below.
-});
 ```
 
 ```typescript
@@ -131,14 +122,13 @@ FeatureGuards does **NOT** do any networking IO for _IsOn_. Therefore, it's safe
 times a second without any caching. It internally keeps a synced copy of all the features defined
 in FeatureGuard for the given API key.
 
+```python
+fg.is_on('MY_FEATURE')
+```
+
 ```go
 // Using fg obtained from the SDK.
 on, err := fg.IsOn("MY_FEATURE")
-```
-
-```javascript
-// Using fg obtained from the SDK.
-const on = await fg.isOn("MY_FEATURE");
 ```
 
 ```typescript
@@ -161,20 +151,14 @@ feature flag definition includes both _userId_ and _companyId_ in that order, th
 be used if both values are passed to `IsOn`. Below are examples for passing attributes to be used
 for evaluating on/off.
 
+```python
+fg.is_on('MY_FEATURE', attrs={'user_id': 123, 'company_slug': 'acme'})
+```
+
 ```go
 // Using fg obtained from the SDK.
 on, err := fg.IsOn("MY_FEATURE", featureguards.WithAttributes(
 		featureguards.Attributes{}.Int64("user_id", 123).String("company_slug", "acme")))
-```
-
-```javascript
-// Using fg obtained from the SDK.
-const on = await fg.isOn("MY_FEATURE", {
-  attrs: {
-    user_id: BigInt(123),
-    company_slug: "acme",
-  },
-});
 ```
 
 ```typescript
@@ -208,10 +192,10 @@ it will be evaluated as off since disallow lists are processed last.
 
 ## Attribute Types
 
-| Type      | Go          | Javascript/Typescript |
-| --------- | ----------- | --------------------- |
-| String    | `string`    | `string`              |
-| Boolean   | `bool`      | `boolean`             |
-| Float     | `float32`   | `number`              |
-| Integer   | `int64`     | `bigint`              |
-| Date/Time | `time.Time` | `Date`                |
+| Type      | Python        | Go          | Javascript/Typescript |
+| --------- | ------------- | ----------- | --------------------- |
+| String    | `str`         | `string`    | `string`              |
+| Boolean   | `bool`        | `bool`      | `boolean`             |
+| Float     | `float`/`int` | `float32`   | `number`              |
+| Integer   | `float`/`int` | `int64`     | `bigint`              |
+| Date/Time | `datetime`    | `time.Time` | `Date`                |

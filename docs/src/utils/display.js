@@ -1,11 +1,13 @@
 export const langDisplayName = (lang) => {
   switch (lang) {
+    case "python":
+      return "Python";
     case "go":
       return "Go";
     case "javascript":
       return "Javascript";
     case "typescript":
-      return "Typescript";
+      return "Typescript/ES6";
     case "javascript-nodejs":
       return "Javascript (NodeJS)";
     case "javascript-browser":

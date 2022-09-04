@@ -28,7 +28,12 @@ programming language.
 
 # Getting Started
 
-It takes a few minutes to add FeatureGuards to your codebase. Please, follow the examples below
+First, create [a new account](https://app.featureguards.com/register) to use our dashboard. The dashboard
+is used to define new feature flags, what rules to use for targeting/rollouts, creating API keys...etc.
+Go through the sign up wizard and create a feature flag (either on/off or percentage). The dashboard
+can be used to manage your feature flags.
+
+Once you've created a feature flag in the dashboard, then it only takes a few minutes to add FeatureGuards to your codebase. Please, follow the examples below
 for each language.
 
 | Language             | Package                                                            | Example                                                                                           |
@@ -72,7 +77,7 @@ const featureGuards = await featureguards({
 
 > Make sure to replace `MY_API_KEY` with your API key based on the platform.
 
-FeatureGuards uses API keys to allow access to the APIs. You can generate a new FeatureGuards API key at our [dashboard](https://featureguards.com/project/settings).
+FeatureGuards uses API keys to allow access to the APIs. You can generate a new FeatureGuards API key at our [dashboard](https://app.featureguards.com/project/settings).
 An API key is associated with a particular platform (i.e., web, server). Only feature flags that
 belong to the given platform are accessed via the corresponding API key. For example, a web API key
 can only access web/browser feature flags.
